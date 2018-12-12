@@ -1,51 +1,55 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 //   /lib/controllers/org.controller.ts
-const mongoose = require("mongoose");
-const org_model_1 = require("../models/org.model");
-const Org = mongoose.model('Org', org_model_1.OrgSchema);
-class OrgController {
-    getOrg(req, res) {
+import * as mongoose from 'mongoose';
+import { OrgSchema } from '../models/org.model';
+import { Request, Response } from 'express';
+
+const Org = mongoose.model('Org', OrgSchema);
+
+export class OrgController{
+    public getOrg (req: Request, res: Response) {           
         Org.find({}, (err, org) => {
-            if (err) {
+            if(err){
                 res.send(err);
             }
             res.json(org);
         });
     }
-    getOrgWithID(req, res) {
+
+    public getOrgWithID (req: Request, res: Response) {           
         Org.findById(req.params.orgId, (err, org) => {
-            if (err) {
+            if(err){
                 res.send(err);
             }
             res.json(org);
         });
     }
-    addNewOrg(req, res) {
+
+    public addNewOrg (req: Request, res: Response) {                
         let newOrg = new Org(req.body);
         newOrg.save((err, org) => {
-            if (err) {
+            if(err){
                 res.send(err);
-            }
+            }    
             res.json(org);
         });
     }
-    updateOrg(req, res) {
+
+    public updateOrg (req: Request, res: Response) {           
         Org.findOneAndUpdate({ _id: req.params.orgId }, req.body, { new: true }, (err, org) => {
-            if (err) {
+            if(err){
                 res.send(err);
             }
             res.json(org);
         });
     }
-    deleteOrg(req, res) {
+
+    public deleteOrg (req: Request, res: Response) {           
         Org.findOneAndDelete({ _id: req.params.orgId }, (err) => {
-            if (err) {
+            if(err){
                 res.send(err);
             }
-            res.json({ message: 'Successfully deleted org!' });
+            res.json({ message: 'Successfully deleted org!'});
         });
+
     }
 }
-exports.OrgController = OrgController;
-//# sourceMappingURL=org.controller.js.map

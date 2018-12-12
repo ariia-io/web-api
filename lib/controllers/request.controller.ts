@@ -1,13 +1,14 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 //   /lib/controllers/request.controller.ts
-const mongoose = require("mongoose");
-const request_model_1 = require("../models/request.model");
-const ServiceRequest = mongoose.model('Request', request_model_1.ServiceRequestSchema);
-class RequestController {
-    getRequest(req, res) {
+import * as mongoose from 'mongoose';
+import { ServiceRequestSchema } from '../models/request.model';
+import { Request, Response } from 'express';
+
+const ServiceRequest = mongoose.model('Request', ServiceRequestSchema);
+
+export class RequestController{
+    public getRequest (req: Request, res: Response) {           
         ServiceRequest.find({}, (err, servicerequest) => {
-            if (err) {
+            if(err){
                 res.send(err);
             }
             res.type('json');
@@ -15,39 +16,42 @@ class RequestController {
             //res.json(servicerequest);
         });
     }
-    getRequestWithID(req, res) {
+
+    public getRequestWithID (req: Request, res: Response) {           
         ServiceRequest.findById(req.params.requestId, (err, servicerequest) => {
-            if (err) {
+            if(err){
                 res.send(err);
             }
             res.json(servicerequest);
         });
     }
-    addNewRequest(req, res) {
+
+    public addNewRequest (req: Request, res: Response) {                
         let newServiceRequest = new ServiceRequest(req.body);
         newServiceRequest.save((err, servicerequest) => {
-            if (err) {
+            if(err){
                 res.send(err);
-            }
+            }    
             res.json(servicerequest);
         });
     }
-    updateRequest(req, res) {
+
+    public updateRequest (req: Request, res: Response) {           
         ServiceRequest.findOneAndUpdate({ _id: req.params.requestId }, req.body, { new: true }, (err, servicerequest) => {
-            if (err) {
+            if(err){
                 res.send(err);
             }
             res.json(servicerequest);
         });
     }
-    deleteRequest(req, res) {
+
+    public deleteRequest (req: Request, res: Response) {           
         ServiceRequest.findOneAndDelete({ _id: req.params.requestId }, (err) => {
-            if (err) {
+            if(err){
                 res.send(err);
             }
-            res.json({ message: 'Successfully deleted service request!' });
+            res.json({ message: 'Successfully deleted service request!'});
         });
+
     }
 }
-exports.RequestController = RequestController;
-//# sourceMappingURL=request.controller.js.map

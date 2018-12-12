@@ -1,51 +1,55 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 //   /lib/controllers/property.controller.ts
-const mongoose = require("mongoose");
-const property_model_1 = require("../models/property.model");
-const Property = mongoose.model('Property', property_model_1.PropertySchema);
-class PropertyController {
-    getProperty(req, res) {
+import * as mongoose from 'mongoose';
+import { PropertySchema } from '../models/property.model';
+import { Request, Response } from 'express';
+
+const Property = mongoose.model('Property', PropertySchema);
+
+export class PropertyController{
+    public getProperty (req: Request, res: Response) {           
         Property.find({}, (err, property) => {
-            if (err) {
+            if(err){
                 res.send(err);
             }
             res.json(property);
         });
     }
-    getPropertyWithID(req, res) {
+
+    public getPropertyWithID (req: Request, res: Response) {           
         Property.findById(req.params.propertyId, (err, property) => {
-            if (err) {
+            if(err){
                 res.send(err);
             }
             res.json(property);
         });
     }
-    addNewProperty(req, res) {
+
+    public addNewProperty (req: Request, res: Response) {                
         let newProperty = new Property(req.body);
         newProperty.save((err, property) => {
-            if (err) {
+            if(err){
                 res.send(err);
-            }
+            }    
             res.json(property);
         });
     }
-    updateProperty(req, res) {
+
+    public updateProperty (req: Request, res: Response) {           
         Property.findOneAndUpdate({ _id: req.params.propertyId }, req.body, { new: true }, (err, property) => {
-            if (err) {
+            if(err){
                 res.send(err);
             }
             res.json(property);
         });
     }
-    deleteProperty(req, res) {
+
+    public deleteProperty (req: Request, res: Response) {           
         Property.findOneAndDelete({ _id: req.params.propertyId }, (err) => {
-            if (err) {
+            if(err){
                 res.send(err);
             }
-            res.json({ message: 'Successfully deleted property!' });
+            res.json({ message: 'Successfully deleted property!'});
         });
+
     }
 }
-exports.PropertyController = PropertyController;
-//# sourceMappingURL=property.controller.js.map

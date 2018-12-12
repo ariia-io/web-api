@@ -1,9 +1,10 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 //   /lib/models/request.model.ts
-const mongoose = require("mongoose");
+import * as mongoose from 'mongoose';
+import { Int32 } from 'bson';
+
 const Schema = mongoose.Schema;
-exports.ServiceRequestPayloadSchema = new Schema({
+
+export const ServiceRequestPayloadSchema = new Schema({
     category: {
         type: String,
     },
@@ -14,7 +15,8 @@ exports.ServiceRequestPayloadSchema = new Schema({
         type: Date
     },
 });
-exports.ServiceRequestSchema = new Schema({
+
+export const ServiceRequestSchema = new Schema({
     property_id: {
         type: String
     },
@@ -41,6 +43,5 @@ exports.ServiceRequestSchema = new Schema({
         type: String,
         lowercase: true // Always convert to lowercase
     },
-    payload: [exports.ServiceRequestPayloadSchema]
+    payload: [ServiceRequestPayloadSchema]
 });
-//# sourceMappingURL=request.model.js.map

@@ -1,9 +1,10 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
 //   /lib/models/org.model.ts
-const mongoose = require("mongoose");
+import * as mongoose from 'mongoose';
+import { Int32 } from 'bson';
+
 const Schema = mongoose.Schema;
-exports.AddressSchema = new Schema({
+
+export const AddressSchema = new Schema({
     street1: {
         type: String,
     },
@@ -20,7 +21,8 @@ exports.AddressSchema = new Schema({
         type: String,
     }
 });
-exports.OrgSchema = new Schema({
+
+export const OrgSchema = new Schema({
     type: {
         type: String,
         required: 'Type of org: HotelGroup, CareHomeGroup, DevelopmentGroup'
@@ -37,6 +39,5 @@ exports.OrgSchema = new Schema({
         type: String,
         lowercase: true // Always convert to lowercase
     },
-    addresses: [exports.AddressSchema]
+    addresses: [AddressSchema]
 });
-//# sourceMappingURL=org.model.js.map
