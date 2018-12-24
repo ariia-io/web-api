@@ -11,7 +11,7 @@ export class OrgController{
             if(err){
                 res.send(err);
             }
-            res.json(org);
+            res.json({ results: org });
         });
     }
 
@@ -20,7 +20,7 @@ export class OrgController{
             if(err){
                 res.send(err);
             }
-            res.json(org);
+            res.json({ results: org });
         });
     }
 
@@ -30,7 +30,7 @@ export class OrgController{
             if(err){
                 res.send(err);
             }    
-            res.json(org);
+            res.json({ results: org });
         });
     }
 
@@ -39,7 +39,7 @@ export class OrgController{
             if(err){
                 res.send(err);
             }
-            res.json(org);
+            res.json({ results: org });
         });
     }
 
@@ -48,7 +48,7 @@ export class OrgController{
             if(err){
                 res.send(err);
             }
-            res.json({ message: 'Successfully deleted org!'});
+            res.json({ results: 'Successfully deleted org!'});
         });
 
     }

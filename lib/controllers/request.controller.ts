@@ -22,7 +22,7 @@ export class RequestController{
             if(err){
                 res.send(err);
             }
-            res.json(servicerequest);
+            res.json({ results: servicerequest });
         });
     }
 
@@ -32,7 +32,7 @@ export class RequestController{
             if(err){
                 res.send(err);
             }    
-            res.json(servicerequest);
+            res.json({ results: servicerequest });
         });
     }
 
@@ -41,7 +41,7 @@ export class RequestController{
             if(err){
                 res.send(err);
             }
-            res.json(servicerequest);
+            res.json({ results: servicerequest });
         });
     }
 
@@ -50,7 +50,7 @@ export class RequestController{
             if(err){
                 res.send(err);
             }
-            res.json({ message: 'Successfully deleted service request!'});
+            res.json({ results: 'Successfully deleted service request!'});
         });
 
     }

@@ -5,7 +5,7 @@ import * as http from 'http';
 import * as fs from 'fs';
 import * as cors from 'cors';
 
-const PORT = 3000;
+const PORT = +process.env.PORT || 3000;
 var tenantSlug;
 
 const httpsOptions = {
@@ -26,7 +26,7 @@ app.use(cors());
 
 // define a deafult simple route
 app.get('/', (req, res) => {
-    res.json({"message": "Welcome to Ariia Web API!"});
+    res.json({"message": "Welcome to Ariia Web API.  You can our API documentation here https://documenter.getpostman.com/view/332848/RzffKqFS"});
 });
 
 app.use(function(req, res) {

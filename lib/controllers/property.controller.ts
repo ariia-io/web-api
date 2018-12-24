@@ -11,7 +11,7 @@ export class PropertyController{
             if(err){
                 res.send(err);
             }
-            res.json(property);
+            res.json({ results: property });
         });
     }
 
@@ -20,7 +20,7 @@ export class PropertyController{
             if(err){
                 res.send(err);
             }
-            res.json(property);
+            res.json({ results: property });
         });
     }
 
@@ -30,7 +30,7 @@ export class PropertyController{
             if(err){
                 res.send(err);
             }    
-            res.json(property);
+            res.json({ results: property });
         });
     }
 
@@ -39,7 +39,7 @@ export class PropertyController{
             if(err){
                 res.send(err);
             }
-            res.json(property);
+            res.json({ results: property });
         });
     }
 
@@ -48,7 +48,7 @@ export class PropertyController{
             if(err){
                 res.send(err);
             }
-            res.json({ message: 'Successfully deleted property!'});
+            res.json({ results: 'Successfully deleted property!'});
         });
 
     }

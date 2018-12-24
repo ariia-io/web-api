@@ -1,4 +1,4 @@
-FROM node:8-alpine
+FROM node:8-alpine as builder
 RUN apk add --no-cache bash
 
 RUN mkdir -p /usr/src/app
