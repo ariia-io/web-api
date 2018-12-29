@@ -11,13 +11,13 @@ export class OrgRoutes {
         
         app.use(cors());
         
-        app.route('/api/v1/orgs') 
+        app.route('/orgs') 
         // GET endpoint 
         .get(this.orgController.getOrg)     
         // POST endpoint
         .post(this.orgController.addNewOrg);
 
-        app.route('/api/v1/orgs/:orgId')
+        app.route('/orgs/:orgId')
         // get specific Property entry
         .get(this.orgController.getOrgWithID)
         // update specific Property           

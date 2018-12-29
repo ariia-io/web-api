@@ -48,7 +48,7 @@ export class PropertyController{
             if(err){
                 res.send(err);
             }
-            res.json({ results: 'Successfully deleted property!'});
+            res.json({ results: 'Successfully deleted property: ' + req.params.propertyId });
         });
 
     }

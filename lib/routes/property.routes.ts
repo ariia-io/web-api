@@ -12,14 +12,14 @@ export class Routes {
         app.use(cors());
         
         /* Properties */
-        app.route('/api/v1/properties') 
+        app.route('/properties') 
         // GET endpoint 
         .get(this.propertyController.getProperty)     
         // POST endpoint
         .post(this.propertyController.addNewProperty);
 
         /* Single Property */
-        app.route('/api/v1/properties/:propertyId')
+        app.route('/properties/:propertyId')
         // get specific Property entry
         .get(this.propertyController.getPropertyWithID)
         // update specific Property           

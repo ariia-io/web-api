@@ -13,14 +13,19 @@ COPY . .
 # Build Sources
 RUN yarn run build
 
-ENV SSH_PASSWD "root:Docker!"
-RUN apk add --no-cache openssh \
-  && echo "$SSH_PASSWD" | chpasswd
+#ENV SSH_PASSWD "root:Docker!"
+#RUN apk add --no-cache openssh \
+#  && echo "$SSH_PASSWD" | chpasswd
 
+FROM node:8-alpine
 COPY ./config/sshd_config /etc/ssh/
 COPY init.sh /usr/local/bin/
 
 RUN chmod u+x /usr/local/bin/init.sh
+
+# Copy build distribution files
+WORKDIR /root/
+COPY --from=builder /usr/src/app .
 
 EXPOSE 3000 2222
 #CMD [ "node", "./dist/server.js" ]

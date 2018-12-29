@@ -11,13 +11,13 @@ export class RequestRoutes {
         
         app.use(cors());
         
-        app.route('/api/v1/requests') 
+        app.route('/requests') 
         // GET endpoint 
         .get(this.requestController.getRequest)     
         // POST endpoint
         .post(this.requestController.addNewRequest);
 
-        app.route('/api/v1/requests/:requestId')
+        app.route('/requests/:requestId')
         // get specific Property entry
         .get(this.requestController.getRequestWithID)
         // update specific Property           
