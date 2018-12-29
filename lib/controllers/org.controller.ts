@@ -48,7 +48,7 @@ export class OrgController{
             if(err){
                 res.send(err);
             }
-            res.json({ results: 'Successfully deleted org:' + req.params.orgId });
+            res.json({ results: 'Successfully deleted org: ' + req.params.orgId });
         });
 
     }

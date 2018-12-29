@@ -50,7 +50,7 @@ export class RequestController{
             if(err){
                 res.send(err);
             }
-            res.json({ results: 'Successfully deleted service request:' + req.params.requestId });
+            res.json({ results: 'Successfully deleted service request: ' + req.params.requestId });
         });
 
     }
